@@ -43,14 +43,14 @@ for i in range(500):
     jointName = 'Torso_BackLeg',
     controlMode = p.POSITION_CONTROL,
     targetPosition = BackSin[i],
-    maxForce = 100)
+    maxForce = 200)
 
     pyrosim.Set_Motor_For_Joint(
     bodyIndex = robotId,
     jointName = 'Torso_FrontLeg',
     controlMode = p.POSITION_CONTROL,
     targetPosition = FrontSin[i],
-    maxForce = 300)
+    maxForce = 500)
 
     time.sleep(1/120)
    
