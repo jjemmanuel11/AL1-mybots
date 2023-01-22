@@ -34,7 +34,9 @@ class ROBOT:
             self.motors[motor].Set_Value(self.robotId, time)
 
     def Think(self):
+        self.nn.Update()
         self.nn.Print()
+        
 
             
 
