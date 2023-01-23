@@ -9,5 +9,5 @@ amplitude_front = numpy.pi/4
 frequency_front = 11
 phaseOffset_front = 0
 
-maxForce = 400
+maxForce = 150
 

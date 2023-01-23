@@ -23,8 +23,8 @@ class SIMULATION:
             p.stepSimulation()
             self.robot.Sense(i)
             self.robot.Think()
-            self.robot.Act(i)
-            time.sleep(1/120)
+            self.robot.Act()
+            time.sleep(1/500)
             
     
     def __del__(self):

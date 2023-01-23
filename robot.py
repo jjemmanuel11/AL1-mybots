@@ -29,7 +29,7 @@ class ROBOT:
             self.sensors[sensor].Get_Value(time)
 
     
-    def Act(self, time):
+    def Act(self):
         for neuronName in self.nn.Get_Neuron_Names():
             if self.nn.Is_Motor_Neuron(neuronName):
                 jointName = self.nn.Get_Motor_Neurons_Joint(neuronName)
