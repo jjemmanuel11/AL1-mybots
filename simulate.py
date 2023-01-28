@@ -1,9 +1,10 @@
 from simulation import SIMULATION
+import sys  
 
-
-
-simulation = SIMULATION()
+directorOrGUI = sys.argv[1]
+simulation = SIMULATION(directorOrGUI)
 simulation.Run()
+simulation.Get_Fitness()
 
 
 

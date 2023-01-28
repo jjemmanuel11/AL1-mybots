@@ -1,6 +1,6 @@
 import numpy 
 
-iterations = 1000
+iterations = 400
 amplitude_back = numpy.pi/3 
 frequency_back = 10
 phaseOffset_back = 0
@@ -10,4 +10,8 @@ frequency_front = 11
 phaseOffset_front = 0
 
 maxForce = 150
+
+numberOfGenerations = 10
+
+
 
