@@ -22,7 +22,7 @@ class HILL_CLIMBER:
     def Evolve_For_One_Generation(self):
         self.Spawn()
         self.Mutate()
-        self.child.Evaluate()
+        self.child.Evaluate("DIRECT")
         self.Print()
         self.Select()
 
@@ -32,7 +32,6 @@ class HILL_CLIMBER:
         for currentGeneration in range(c.numberOfGenerations):
             self.Evolve_For_One_Generation()
         
-        self.parent.Evaluate("GUI")
         
 
             
