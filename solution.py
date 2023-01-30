@@ -3,6 +3,7 @@ import numpy
 import pyrosim.pyrosim as pyrosim
 import os
 import random
+import time
 
 
 class SOLUTION:
@@ -11,15 +12,38 @@ class SOLUTION:
          self.weights = (self.weights * 2) - 1
          self.myID = nextAvailableID
     
-    def Evaluate(self, directOrGUI):
+    def Start_Simulation(self, directOrGUI):
         self.Create_World()
         self.Create_Body()
         self.Create_Brain()
         os.system("python3 simulate.py " +  directOrGUI + " " + str(self.myID) + " &")
-        f = open("fitness" + int(self.myID) + ".txt", "r")
+        
+        pass
+
+    def Wait_For_Simulation_To_End(self):
+        fitnessFileName = "fitness" + str(self.myID) + ".txt"
+        while not os.path.exists(fitnessFileName):
+            time.sleep(0.01)
+        f = open("fitness" + str(self.myID) + ".txt", "r")
         self.fitness = float(f.read())
-        print(self.fitness)
+        print("HELLO", self.fitness)
         f.close()
+
+        os.system("rm " + fitnessFileName)
+    
+    def Evaluate(self, directOrGUI):
+        pass
+        # self.Create_World()
+        # self.Create_Body()
+        # self.Create_Brain()
+        # os.system("python3 simulate.py " +  directOrGUI + " " + str(self.myID) + " &")
+        # fitnessFileName = "fitness" + str(self.myID) + ".txt"
+        # while not os.path.exists(fitnessFileName):
+        #     time.sleep(0.01)
+        # f = open("fitness" + str(self.myID) + ".txt", "r")
+        # self.fitness = float(f.read())
+        # print(self.fitness)
+        # f.close()
 
         
     def Mutate(self):
