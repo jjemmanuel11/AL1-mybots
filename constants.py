@@ -13,7 +13,7 @@ maxForce = 150
 
 numberOfGenerations = 10
 
-populationSize = 2 
+populationSize = 10
 
 
 
