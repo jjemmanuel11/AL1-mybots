@@ -51,7 +51,7 @@ class SOLUTION:
     
     def Set_ID(self, id):
         self.myID = id
-        self.nextAvailableID += 1
+        # self.nextAvailableID += 1
 
     def Create_World(self):
         pyrosim.Start_SDF("world.sdf")
