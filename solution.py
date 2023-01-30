@@ -26,7 +26,7 @@ class SOLUTION:
             time.sleep(0.01)
         f = open("fitness" + str(self.myID) + ".txt", "r")
         self.fitness = float(f.read())
-        print("HELLO", self.fitness)
+        
         f.close()
 
         os.system("rm " + fitnessFileName)
