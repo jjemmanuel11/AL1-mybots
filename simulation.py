@@ -15,12 +15,13 @@ class SIMULATION:
         else:
             p.connect(p.GUI)
         
+        
         self.directOrGui = directOrGui
         self.physicsClient = p.connect(p.DIRECT)
         p.setAdditionalSearchPath(pybullet_data.getDataPath())
         p.setGravity(0,0,-9.8)
         self.world = WORLD()
-        self.robot = ROBOT()
+        self.robot = ROBOT(solutionID)
        
 
 

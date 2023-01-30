@@ -3,7 +3,7 @@ import sys
 
 directorOrGUI = sys.argv[1]
 solutionID = sys.argv[2]
-simulation = SIMULATION(directorOrGUI)
+simulation = SIMULATION(directorOrGUI, solutionID)
 simulation.Run()
 simulation.Get_Fitness()
 
