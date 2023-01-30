@@ -6,12 +6,12 @@ from motor import MOTOR
 from sensor import SENSOR
 
 class ROBOT:
-    def __init__(self):
+    def __init__(self, solutionID):
         self.robotId = p.loadURDF("body.urdf")
         pyrosim.Prepare_To_Simulate(self.robotId)
         self.Prepare_to_Sense()
         self.Prepare_To_Act()
-        self.nn = NEURAL_NETWORK("brain.nndf")
+        self.nn = NEURAL_NETWORK("brain" + str(solutionID) + ".nndf")
 
     
     def Prepare_to_Sense(self):

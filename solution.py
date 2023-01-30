@@ -6,15 +6,16 @@ import random
 
 
 class SOLUTION:
-    def __init__(self):
+    def __init__(self, nextAvailableID):
          self.weights = numpy.random.rand(3,2)
          self.weights = (self.weights * 2) - 1
+         self.myID = nextAvailableID
     
-    def Evaluate(self, arg):
+    def Evaluate(self, directOrGUI):
         self.Create_World()
         self.Create_Body()
         self.Create_Brain()
-        os.system("python3 simulate.py " + arg)
+        os.system("python3 simulate.py " + directOrGUI + " &")
         f = open("fitness.txt", "r")
         self.fitness = float(f.read())
         f.close()
@@ -23,6 +24,10 @@ class SOLUTION:
     def Mutate(self):
         self.weights[random.randint(0,2), random.randint(0,1)] = random.random() * 2 -1
     
+    def Set_ID(self, id):
+        self.myID = id
+        self.nextAvailableID += 1
+
     def Create_World(self):
         pyrosim.Start_SDF("world.sdf")
 
@@ -63,7 +68,7 @@ class SOLUTION:
         pyrosim.End()
 
     def Create_Brain(self):
-        pyrosim.Start_NeuralNetwork("brain.nndf")
+        pyrosim.Start_NeuralNetwork("brain"+ str(self.myID) + ".nndf")
         pyrosim.Send_Sensor_Neuron(name = 0 , linkName = "Torso")
         pyrosim.Send_Sensor_Neuron(name = 1 , linkName = "BackLeg")
         pyrosim.Send_Sensor_Neuron(name = 2 , linkName = "FrontLeg")

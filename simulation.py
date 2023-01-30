@@ -9,7 +9,7 @@ import time
 
 
 class SIMULATION:
-    def __init__(self, directOrGui):
+    def __init__(self, directOrGui, solutionID):
         if directOrGui == "DIRECT":
             p.connect(p.DIRECT)
         else:
