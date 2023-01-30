@@ -13,12 +13,13 @@ class SOLUTION:
          self.myID = nextAvailableID
     
     def Start_Simulation(self, directOrGUI):
+        pyrosim.Start_SDF("world.sdf")
         self.Create_World()
         self.Create_Body()
         self.Create_Brain()
         os.system("python3 simulate.py " +  directOrGUI + " " + str(self.myID) + " &")
         
-        pass
+
 
     def Wait_For_Simulation_To_End(self):
         fitnessFileName = "fitness" + str(self.myID) + ".txt"
@@ -54,7 +55,7 @@ class SOLUTION:
         # self.nextAvailableID += 1
 
     def Create_World(self):
-        pyrosim.Start_SDF("world.sdf")
+        # pyrosim.Start_SDF("world.sdf")
 
         x=1.5
         y=1.5
