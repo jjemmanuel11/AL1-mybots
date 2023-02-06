@@ -49,6 +49,8 @@ class ROBOT:
         self.nn.Update()
         # self.nn.Print()
 
+
+    #determines how u test for fitness --> relates to the behavior 
     def Get_Fitnness(self):
         basePositionAndOrientation = p.getBasePositionAndOrientation(self.robotId)
         basePosition = basePositionAndOrientation[0]
