@@ -8,7 +8,7 @@
         <visual>
             <origin xyz="0 0 1" rpy="0 0 0"/>
             <geometry>
-                <box size="3 1 1" />
+                <box size="3 1 0.75" />
             </geometry>
             <material name="Cyan">
                 <color rgba="0 1.0 1.0 1.0"/>
@@ -17,7 +17,7 @@
         <collision>
             <origin xyz="0 0 1" rpy="0 0 0"/>
             <geometry>
-                <box size="3 1 1" />
+                <box size="3 1 0.75" />
             </geometry>
         </collision>
     </link>
@@ -25,7 +25,7 @@
        <parent link="Torso"/>
        <child  link="FrontLeg"/>
        <origin rpy="0 0 0" xyz="0.5 0.5 1" />
-     <axis xyz="1 0 0"/>
+     <axis xyz="0 1 0"/>
        <limit effort="0.0" lower="-3.14159" upper="3.14159" velocity="0.0"/>
     </joint>
     <link name="FrontLeg">
@@ -54,7 +54,7 @@
        <parent link="FrontLeg"/>
        <child  link="FrontLowerLeg"/>
        <origin rpy="0 0 0" xyz="0 1 0" />
-     <axis xyz="1 0 0"/>
+     <axis xyz="0 1 0"/>
        <limit effort="0.0" lower="-3.14159" upper="3.14159" velocity="0.0"/>
     </joint>
     <link name="FrontLowerLeg">
@@ -83,7 +83,7 @@
        <parent link="Torso"/>
        <child  link="BackLeg"/>
        <origin rpy="0 0 0" xyz="0.5 -0.5 1" />
-     <axis xyz="1 0 0"/>
+     <axis xyz="0 1 0"/>
        <limit effort="0.0" lower="-3.14159" upper="3.14159" velocity="0.0"/>
     </joint>
     <link name="BackLeg">
@@ -112,7 +112,7 @@
        <parent link="BackLeg"/>
        <child  link="BackLowerLeg"/>
        <origin rpy="0 0 0" xyz="0.5 -1 0" />
-     <axis xyz="1 0 0"/>
+     <axis xyz="0 1 0"/>
        <limit effort="0.0" lower="-3.14159" upper="3.14159" velocity="0.0"/>
     </joint>
     <link name="BackLowerLeg">
@@ -141,7 +141,7 @@
        <parent link="Torso"/>
        <child  link="LeftLeg"/>
        <origin rpy="0 0 0" xyz="-0.5 0.5 1" />
-     <axis xyz="1 0 0"/>
+     <axis xyz="0 1 0"/>
        <limit effort="0.0" lower="-3.14159" upper="3.14159" velocity="0.0"/>
     </joint>
     <link name="LeftLeg">
@@ -170,7 +170,7 @@
        <parent link="LeftLeg"/>
        <child  link="LeftLowerLeg"/>
        <origin rpy="0 0 0" xyz="0 1 0" />
-     <axis xyz="1 0 0"/>
+     <axis xyz="0 1 0"/>
        <limit effort="0.0" lower="-3.14159" upper="3.14159" velocity="0.0"/>
     </joint>
     <link name="LeftLowerLeg">

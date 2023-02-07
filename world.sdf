@@ -1,7 +1,7 @@
 <sdf>
-    <model name="Box">
-        <pose>-2 -2 0.5 0 0 0 </pose>
-        <link name="Box">
+    <model name="Block">
+        <pose>-3 -2.5 0.5 0 0 0 </pose>
+        <link name="Block">
             <inertial>
                 <mass>1.0</mass>
                 <inertia>
@@ -30,7 +30,7 @@
         </link>
     </model>
     <model name="Block">
-        <pose>0 0 2 0 0 0 </pose>
+        <pose>-5 4 0.5 0 0 0 </pose>
         <link name="Block">
             <inertial>
                 <mass>1.0</mass>
@@ -46,14 +46,134 @@
             <collision>
                 <geometry>
                    <box>
-                      <size>0.5 0.5 0.5</size>
+                      <size>1 1 1</size>
                    </box>
                 </geometry>
             </collision>
             <visual>
                 <geometry>
                    <box>
-                      <size>0.5 0.5 0.5</size>
+                      <size>1 1 1</size>
+                   </box>
+                </geometry>
+            </visual>
+        </link>
+    </model>
+    <model name="Block">
+        <pose>-4 2 0.5 0 0 0 </pose>
+        <link name="Block">
+            <inertial>
+                <mass>1.0</mass>
+                <inertia>
+                    <ixx>0.083</ixx>
+                    <ixy>0.0</ixy>
+                    <ixz>0.0</ixz>
+                    <iyy>0.083</iyy>
+                    <iyz>0.0</iyz>
+                    <izz>0.083</izz>
+                </inertia>
+            </inertial>
+            <collision>
+                <geometry>
+                   <box>
+                      <size>1 1 1</size>
+                   </box>
+                </geometry>
+            </collision>
+            <visual>
+                <geometry>
+                   <box>
+                      <size>1 1 1</size>
+                   </box>
+                </geometry>
+            </visual>
+        </link>
+    </model>
+    <model name="Block">
+        <pose>-6 -2 0.5 0 0 0 </pose>
+        <link name="Block">
+            <inertial>
+                <mass>1.0</mass>
+                <inertia>
+                    <ixx>0.083</ixx>
+                    <ixy>0.0</ixy>
+                    <ixz>0.0</ixz>
+                    <iyy>0.083</iyy>
+                    <iyz>0.0</iyz>
+                    <izz>0.083</izz>
+                </inertia>
+            </inertial>
+            <collision>
+                <geometry>
+                   <box>
+                      <size>1 1 1</size>
+                   </box>
+                </geometry>
+            </collision>
+            <visual>
+                <geometry>
+                   <box>
+                      <size>1 1 1</size>
+                   </box>
+                </geometry>
+            </visual>
+        </link>
+    </model>
+    <model name="Block">
+        <pose>-8 -1 0.5 0 0 0 </pose>
+        <link name="Block">
+            <inertial>
+                <mass>1.0</mass>
+                <inertia>
+                    <ixx>0.083</ixx>
+                    <ixy>0.0</ixy>
+                    <ixz>0.0</ixz>
+                    <iyy>0.083</iyy>
+                    <iyz>0.0</iyz>
+                    <izz>0.083</izz>
+                </inertia>
+            </inertial>
+            <collision>
+                <geometry>
+                   <box>
+                      <size>1 1 1</size>
+                   </box>
+                </geometry>
+            </collision>
+            <visual>
+                <geometry>
+                   <box>
+                      <size>1 1 1</size>
+                   </box>
+                </geometry>
+            </visual>
+        </link>
+    </model>
+    <model name="Block">
+        <pose>-10 -2 0.5 0 0 0 </pose>
+        <link name="Block">
+            <inertial>
+                <mass>1.0</mass>
+                <inertia>
+                    <ixx>0.083</ixx>
+                    <ixy>0.0</ixy>
+                    <ixz>0.0</ixz>
+                    <iyy>0.083</iyy>
+                    <iyz>0.0</iyz>
+                    <izz>0.083</izz>
+                </inertia>
+            </inertial>
+            <collision>
+                <geometry>
+                   <box>
+                      <size>1 1 1</size>
+                   </box>
+                </geometry>
+            </collision>
+            <visual>
+                <geometry>
+                   <box>
+                      <size>1 1 1</size>
                    </box>
                 </geometry>
             </visual>
