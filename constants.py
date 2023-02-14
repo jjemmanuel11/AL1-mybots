@@ -11,9 +11,9 @@ phaseOffset_front = 0
 
 maxForce = 150
 
-numberOfGenerations = 15
+numberOfGenerations = 1
 
-populationSize = 10
+populationSize = 1
 
 numSensorNeurons = 9
 numMotorNeurons = 8
