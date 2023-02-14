@@ -52,41 +52,47 @@ class SOLUTION:
         for i in range(num_links):
             if sensors[i] == 1:
                 #green
-                color_name = "Green"
-                rgb_color = (1,255,10)
+                color_name = 'Green'
+                rgb_color = (0, 1.0, 0)
             else:
                 #blue
-                color_name = "Blue"
-                rgb_color = (1,255,231)
+                color_name = 'Blue'
+                rgb_color = (0, 1.0, 1.0)
+
+        print(sensors)        
         
 
         #randomize sizes of links 
         x_pos = 0
         y_pos = 0
-        z_pos = 2.5
+        z_pos = 1
+
 
         x_size = 1
         y_size = 1
         z_size = 1
 
         #head - 'link0'
-        pyrosim.Send_Cube(name= "link0", pos=[x_pos, y_pos, z_pos] , size=[x_size,y_size,z_size])
-        pyrosim.Send_Joint(name = "link0_link1" , parent= "link0" , child = "link1" , type = "revolute", position = [x_pos,y_pos + y_size/2,z_pos], jointAxis="0 0 1")
+        pyrosim.Send_Cube(name= "link0", pos=[x_pos, y_pos, z_pos] , size=[x_size,y_size,z_size], color=color_name, rgb=rgb_color)
+        pyrosim.Send_Joint(name = "link0_link1" , parent= "link0" , child = "link1" , type = "revolute", position = [x_pos,0.5,z_pos/2], jointAxis="0 0 1")
 
+
+        #rest of the body
         for i in range(1,num_links):
             
-            pzs = z_size
-            x_size = random.randint(1,3)
-            y_size = random.randint(1,3)
-            z_size = random.randint(1,3) 
+            #randomize body sizes
+            x_size = random.randint(1,2)
+            y_size = random.randint(1,2)
+            z_size = random.randint(1,2) 
 
+            #creates each link of the body
+            pyrosim.Send_Cube(name= "link" + str(i), pos=[x_pos, y_size/2, z_pos] , size=[x_size,y_size,z_size], color=color_name, rgb=rgb_color)
 
-            pyrosim.Send_Cube(name= "link" + str(i), pos=[x_pos, y_size/2, pzs] , size=[x_size,y_size,z_size])
-
+            #creates joints
             if i + 1 >= num_links:
                 pass
             else:
-                pyrosim.Send_Joint(name = "link" + str(i) + "_" + "link" + str(i+1) , parent= "link" + str(i) , child = "link" + str(i+1) , type = "revolute", position = [x_pos,y_size,z_pos], jointAxis="0 0 1")
+                pyrosim.Send_Joint(name = "link" + str(i) + "_" + "link" + str(i+1) , parent= "link" + str(i) , child = "link" + str(i+1) , type = "revolute", position = [x_pos,y_size,z_pos/2], jointAxis="0 0 1")
                 print("num_links:",num_links)
     
         self.sensors = sensors
@@ -103,16 +109,13 @@ class SOLUTION:
         
         print("sensor count:", sensor_count)
 
-        #make sensors for the assigned links
+    
         for i in range(len(self.sensors)):
             if(self.sensors[i] == 1):
                 pyrosim.Send_Sensor_Neuron(name = i , linkName = "link" + str(i))
-                print('sending sensor for ', i)
             if(i != len(self.sensors) - 1):
                 pyrosim.Send_Motor_Neuron(name = i + 100, jointName = "link" + str(i) + "_" + "link" + str(i+1))
-        #attach a motor to every joint
-    
-        #create a syanpse between every sensor neuron and every motor neuron
+       
         for i in range(len(self.sensors)):
             if(self.sensors[i] == 1):
                 for j in range(len(self.sensors) - 1):

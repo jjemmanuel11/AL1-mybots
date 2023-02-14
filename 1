@@ -10,6 +10,22 @@ MotionThreadFunc thread started
 b3Printf: b3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
 
 b3Printf: expected a world element, continuing without it.
+Traceback (most recent call last):
+  File "/Users/emmanuelnidea/Desktop/AL1-mybots/simulate.py", line 7, in <module>
+    simulation.Run()
+  File "/Users/emmanuelnidea/Desktop/AL1-mybots/simulation.py", line 32, in Run
+    self.robot.Sense(i)
+  File "/Users/emmanuelnidea/Desktop/AL1-mybots/robot.py", line 32, in Sense
+    self.sensors[sensor].Get_Value(time)
+  File "/Users/emmanuelnidea/Desktop/AL1-mybots/sensor.py", line 12, in Get_Value
+    self.values[time] = pyrosim.Get_Touch_Sensor_Value_For_Link(self.linkName)
+  File "/Users/emmanuelnidea/Desktop/AL1-mybots/pyrosim/pyrosim.py", line 53, in Get_Touch_Sensor_Value_For_Link
+    for pt in pts:
+TypeError: 'NoneType' object is not iterable
+Exception ignored in: <function SIMULATION.__del__ at 0x7fe2fecb10d0>
+Traceback (most recent call last):
+  File "/Users/emmanuelnidea/Desktop/AL1-mybots/simulation.py", line 44, in __del__
+pybullet.error: Not connected to physics server.
 numActiveThreads = 0
 stopping threads
 Thread with taskId 0 exiting
@@ -18,19 +34,3 @@ destroy semaphore
 semaphore destroyed
 destroy main semaphore
 main semaphore destroyed
-Traceback (most recent call last):
-  File "/Users/emmanuelnidea/Desktop/AL1-mybots/simulate.py", line 7, in <module>
-    simulation.Run()
-  File "/Users/emmanuelnidea/Desktop/AL1-mybots/simulation.py", line 34, in Run
-    self.robot.Act()
-  File "/Users/emmanuelnidea/Desktop/AL1-mybots/robot.py", line 41, in Act
-    self.motors[jointName].Set_Value(self.robotId, desiredAngle)
-  File "/Users/emmanuelnidea/Desktop/AL1-mybots/motor.py", line 21, in Set_Value
-    pyrosim.Set_Motor_For_Joint(bodyIndex= robotId, jointName = self.jointName, controlMode= p.POSITION_CONTROL,
-  File "/Users/emmanuelnidea/Desktop/AL1-mybots/pyrosim/pyrosim.py", line 158, in Set_Motor_For_Joint
-    p.setJointMotorControl2(
-pybullet.error: Not connected to physics server.
-Exception ignored in: <function SIMULATION.__del__ at 0x7faf52caf160>
-Traceback (most recent call last):
-  File "/Users/emmanuelnidea/Desktop/AL1-mybots/simulation.py", line 44, in __del__
-pybullet.error: Not connected to physics server.
