@@ -63,7 +63,7 @@ class SOLUTION:
         #randomize sizes of links 
         x_pos = 0
         y_pos = 0
-        z_pos = 2
+        z_pos = 2.5
 
         x_size = 1
         y_size = 1
@@ -71,22 +71,22 @@ class SOLUTION:
 
         #head - 'link0'
         pyrosim.Send_Cube(name= "link0", pos=[x_pos, y_pos, z_pos] , size=[x_size,y_size,z_size])
-        pyrosim.Send_Joint(name = "link0_link1" , parent= "link0" , child = "link1" , type = "revolute", position = [x_pos,y_pos + y_size/2,z_pos], jointAxis="1 0 0")
+        pyrosim.Send_Joint(name = "link0_link1" , parent= "link0" , child = "link1" , type = "revolute", position = [x_pos,y_pos + y_size/2,z_pos], jointAxis="0 0 1")
 
         for i in range(1,num_links):
-            pz_size = z_size
+            
+            pzs = z_size
+            x_size = random.randint(1,3)
+            y_size = random.randint(1,3)
+            z_size = random.randint(1,3) 
 
-            x_size = random.randint(1,4)
-            y_size = random.randint(1,4)
-            z_size = random.randint(1,4)
 
-
-            pyrosim.Send_Cube(name= "link" + str(i), pos=[x_pos, y_size/2, pz_size/2] , size=[x_size,y_size,z_size])
+            pyrosim.Send_Cube(name= "link" + str(i), pos=[x_pos, y_size/2, pzs] , size=[x_size,y_size,z_size])
 
             if i + 1 >= num_links:
                 pass
             else:
-                pyrosim.Send_Joint(name = "link" + str(i) + "_" + "link" + str(i+1) , parent= "link" + str(i) , child = "link" + str(i+1) , type = "revolute", position = [x_pos,y_size,z_pos], jointAxis="1 0 0")
+                pyrosim.Send_Joint(name = "link" + str(i) + "_" + "link" + str(i+1) , parent= "link" + str(i) , child = "link" + str(i+1) , type = "revolute", position = [x_pos,y_size,z_pos], jointAxis="0 0 1")
                 print("num_links:",num_links)
     
         self.sensors = sensors
@@ -103,18 +103,20 @@ class SOLUTION:
         
         print("sensor count:", sensor_count)
 
-
+        #make sensors for the assigned links
         for i in range(len(self.sensors)):
             if(self.sensors[i] == 1):
                 pyrosim.Send_Sensor_Neuron(name = i , linkName = "link" + str(i))
                 print('sending sensor for ', i)
             if(i != len(self.sensors) - 1):
                 pyrosim.Send_Motor_Neuron(name = i + 100, jointName = "link" + str(i) + "_" + "link" + str(i+1))
-       
+        #attach a motor to every joint
+    
+        #create a syanpse between every sensor neuron and every motor neuron
         for i in range(len(self.sensors)):
             if(self.sensors[i] == 1):
                 for j in range(len(self.sensors) - 1):
-                    pyrosim.Send_Synapse(sourceNeuronName=i, targetNeuronName=j + 10, weight=1)
+                    pyrosim.Send_Synapse(sourceNeuronName=i, targetNeuronName=j + 100, weight=1)
 
 
         
