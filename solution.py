@@ -73,7 +73,7 @@ class SOLUTION:
         z_size = 1
 
         #head - 'link0'
-        pyrosim.Send_Cube(name= "link0", pos=[x_pos, y_pos, z_pos] , size=[x_size,y_size,z_size], color=color_name, rgb=rgb_color)
+        pyrosim.Send_Cube(name= "link0", pos=[x_pos, y_pos, z_pos] , size=[x_size,y_size,z_size], color_name=color_name, rgb=rgb_color)
         pyrosim.Send_Joint(name = "link0_link1" , parent= "link0" , child = "link1" , type = "revolute", position = [x_pos,0.5,z_pos/2], jointAxis="0 0 1")
 
 
@@ -86,7 +86,7 @@ class SOLUTION:
             z_size = random.randint(1,2) 
 
             #creates each link of the body
-            pyrosim.Send_Cube(name= "link" + str(i), pos=[x_pos, y_size/2, z_pos] , size=[x_size,y_size,z_size], color=color_name, rgb=rgb_color)
+            pyrosim.Send_Cube(name= "link" + str(i), pos=[x_pos, y_size/2, z_pos] , size=[x_size,y_size,z_size], color_name=color_name, rgb=rgb_color)
 
             #creates joints
             if i + 1 >= num_links:
@@ -109,28 +109,18 @@ class SOLUTION:
         
         print("sensor count:", sensor_count)
 
-    
         for i in range(len(self.sensors)):
             if(self.sensors[i] == 1):
                 pyrosim.Send_Sensor_Neuron(name = i , linkName = "link" + str(i))
             if(i != len(self.sensors) - 1):
                 pyrosim.Send_Motor_Neuron(name = i + 100, jointName = "link" + str(i) + "_" + "link" + str(i+1))
-       
+
         for i in range(len(self.sensors)):
             if(self.sensors[i] == 1):
                 for j in range(len(self.sensors) - 1):
                     pyrosim.Send_Synapse(sourceNeuronName=i, targetNeuronName=j + 100, weight=1)
 
-
-        
-
-
-        #UNCOMMENT THIS LATER!!!
-        # for currentRow in range(c.numSensorNeurons):
-        #     for currentColumn in range(c.numMotorNeurons):
-        #         pyrosim.Send_Synapse(sourceNeuronName=currentRow, targetNeuronName=currentColumn + c.numSensorNeurons, weight=self.weights[currentRow][currentColumn])
-
-
+    
         pyrosim.End()
     def Mutate(self):
         randomRow = random.randint(0, 2)
