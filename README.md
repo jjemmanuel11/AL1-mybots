@@ -8,3 +8,5 @@ This program is a random snakes generator that generates randomly shaped snakes 
 I used pybullet and my code base is based off of the ludobots course https://www.reddit.com/r/ludobots/
 
 
+# How to Run
+To run this code, run search.py
